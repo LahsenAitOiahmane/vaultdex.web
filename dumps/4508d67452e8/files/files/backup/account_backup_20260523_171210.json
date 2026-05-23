@@ -1,0 +1,51 @@
+{
+  "backupVersion": "1.0",
+  "credentials": {
+    "accountNumber": "VLT-1001271-ACC",
+    "password": "qwerty",
+    "sessionToken": "82fdf047-5561-4a0c-be03-f49871f63ef9",
+    "username": "email@gmail.com"
+  },
+  "exportedAt": "20260523_171210",
+  "notes": [
+    {
+      "category": "Personal",
+      "content": "",
+      "title": "qwert"
+    }
+  ],
+  "profile": {
+    "balance": 2254.73,
+    "cardExpiry": "09/27",
+    "cardNumber": "**** **** **** 8115",
+    "creditScore": 741,
+    "displayName": "email",
+    "email": "email@gmail.com"
+  },
+  "transactions": [
+    {
+      "amount": 3500.0,
+      "description": "Salary deposit",
+      "recipientAccount": "VLT-1001271-ACC",
+      "type": "credit"
+    },
+    {
+      "amount": 149.99,
+      "description": "Netflix subscription",
+      "recipientAccount": "NET-PAY-0034-ACC",
+      "type": "debit"
+    },
+    {
+      "amount": 82.5,
+      "description": "Transfer to savings",
+      "recipientAccount": "VLT-7259378-SAV",
+      "type": "debit"
+    },
+    {
+      "amount": 250.0,
+      "description": "Freelance payment received",
+      "recipientAccount": "VLT-1001271-ACC",
+      "type": "credit"
+    }
+  ]
+}

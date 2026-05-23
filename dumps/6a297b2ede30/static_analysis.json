@@ -1,0 +1,112 @@
+{
+  "package_name": "com.vaultdex.app",
+  "app_name": "VaultDex",
+  "version_name": "1.0",
+  "version_code": "1",
+  "apk_size_bytes": 17073198,
+  "min_sdk": 26,
+  "min_sdk_name": "8.0 (Oreo)",
+  "target_sdk": 34,
+  "target_sdk_name": "14",
+  "native_architectures": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86",
+    "x86_64"
+  ],
+  "uses_features": [
+    "android.hardware.faketouch"
+  ],
+  "permissions": [
+    {
+      "name": "com.vaultdex.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+      "risk_level": "unknown",
+      "category": "custom",
+      "description": "Custom permission defined by app or third-party library.",
+      "is_custom": true
+    }
+  ],
+  "dangerous_permission_count": 0,
+  "total_permission_count": 1,
+  "exported_components": [],
+  "total_exported_components": 0,
+  "launchable_activity": "com.vaultdex.app.MainActivity",
+  "manifest_flags": {
+    "debuggable": true,
+    "allow_backup": true,
+    "uses_cleartext_traffic": true,
+    "network_security_config": false,
+    "test_only": false
+  },
+  "deep_links": [],
+  "custom_url_schemes": [],
+  "findings": [
+    {
+      "rule_id": "STATIC-FLAG-001",
+      "rule_name": "App Is Debuggable",
+      "severity": "CRITICAL",
+      "category": "config",
+      "storage_area": "shared_prefs",
+      "file_path": "AndroidManifest.xml",
+      "key_or_field": "android:debuggable",
+      "value_preview": "true",
+      "description": "The app has android:debuggable=true set in the manifest. This allows any user to attach a debugger (JDWP), inspect memory, bypass security checks, and extract all data at runtime. This MUST be false in production builds.",
+      "recommendation": "Set android:debuggable=\"false\" in the release build. Use BuildConfig.DEBUG for debug-only code paths. Ensure your build system strips the flag for release variants.",
+      "extra": {
+        "analysis_type": "static"
+      }
+    },
+    {
+      "rule_id": "STATIC-FLAG-002",
+      "rule_name": "App Data Backup Allowed",
+      "severity": "HIGH",
+      "category": "config",
+      "storage_area": "shared_prefs",
+      "file_path": "AndroidManifest.xml",
+      "key_or_field": "android:allowBackup",
+      "value_preview": "true",
+      "description": "The app allows full data backup via `adb backup`. An attacker with physical access or ADB access can extract all SharedPreferences, databases, and internal files without root. This is a major data exfiltration risk.",
+      "recommendation": "Set android:allowBackup=\"false\" or implement a custom BackupAgent that excludes sensitive data. On Android 12+, use android:dataExtractionRules to control cloud vs device-to-device backup.",
+      "extra": {
+        "analysis_type": "static"
+      }
+    },
+    {
+      "rule_id": "STATIC-FLAG-003",
+      "rule_name": "Cleartext Traffic Allowed",
+      "severity": "HIGH",
+      "category": "config",
+      "storage_area": "shared_prefs",
+      "file_path": "AndroidManifest.xml",
+      "key_or_field": "android:usesCleartextTraffic",
+      "value_preview": "true",
+      "description": "The app allows cleartext (unencrypted HTTP) traffic. Any data sent over HTTP can be intercepted by network attackers (MITM). This includes credentials, tokens, and PII.",
+      "recommendation": "Set android:usesCleartextTraffic=\"false\" and use HTTPS exclusively. Implement a Network Security Configuration to enforce certificate pinning for critical domains.",
+      "extra": {
+        "analysis_type": "static"
+      }
+    },
+    {
+      "rule_id": "STATIC-FLAG-004",
+      "rule_name": "No Network Security Configuration",
+      "severity": "MEDIUM",
+      "category": "config",
+      "storage_area": "shared_prefs",
+      "file_path": "AndroidManifest.xml",
+      "key_or_field": "networkSecurityConfig",
+      "value_preview": "missing",
+      "description": "The app does not define a Network Security Configuration. Without this, the app relies on platform defaults which may allow cleartext traffic to some domains. A network security config enables certificate pinning and domain-specific TLS rules.",
+      "recommendation": "Add a res/xml/network_security_config.xml that: (1) Disables cleartext traffic, (2) Pins certificates for your API domains, (3) Restricts trusted CAs to system-only for production builds.",
+      "extra": {
+        "analysis_type": "static"
+      }
+    }
+  ],
+  "severity_counts": {
+    "critical": 1,
+    "high": 2,
+    "medium": 1,
+    "low": 0,
+    "info": 0
+  }
+}

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="session_token">82fdf047-5561-4a0c-be03-f49871f63ef9</string>
+    <string name="account_number">VLT-1001271-ACC</string>
+    <string name="password">qwerty</string>
+    <boolean name="is_logged_in" value="true" />
+    <string name="display_name">email</string>
+    <string name="email">email@gmail.com</string>
+    <string name="username">email@gmail.com</string>
+</map>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="access_token">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiIke3VzZXJFbWFpbH0iLCJpYXQiOjE3MTYwMjM5MDIsImV4cCI6MTcxNjAyNzUwMiwiaXNzIjoiaHR0cHM6Ly9hdXRoLnZhdWx0ZGV4LmNvbSIsImF1ZCI6InZhdWx0ZGV4LW1vYmlsZSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwgdHJhbnNhY3Rpb25zOnJlYWQifQ.kR7PxG2vN8mQ1wL3jF5dH9sY4bA6cE0iK2oU7tZ8xW3pJ5nM</string>
+    <string name="refresh_token">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6InJlZnJlc2giLCJqdGkiOiIke1VVSUQucmFuZG9tVVVJRCgpfSIsImlhdCI6MTcxNjAyMzkwMiwiZXhwIjoxNzE4NjE1OTAyfQ.mN8bV2cX4dF6gH0jK2lO4pQ6rS8tU0vW2xY4zA6bC8dE0fG</string>
+    <string name="auth_server_url">https://auth.vaultdex.com/oauth2</string>
+    <string name="scope">openid profile email transactions:read</string>
+    <string name="id_token">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJ1c2VyQHZhdWx0ZGV4LmNvbSIsIm5hbWUiOiJKb2huIERvZSIsInBpY3R1cmUiOiJodHRwczovL2F2YXRhcnMuZXhhbXBsZS5jb20vam9obiIsInBob25lX251bWJlciI6IisxNTU1MTIzNDU2NyIsImFkZHJlc3MiOnsiZm9ybWF0dGVkIjoiMTIzIE1haW4gU3QsIFNhbiBGcmFuY2lzY28sIENBIDk0MTAyIn19.qR3sT5uV7wX9yZ1aB3cD5eF7gH9iJ1kL3mN5oP7qR9sT</string>
+    <string name="client_secret">dGhpc19pc19hX3NlY3JldF9jbGllbnRfc2VjcmV0XzEyMzQ1Njc4OTA=</string>
+    <string name="token_type">Bearer</string>
+    <long name="expires_in" value="3600" />
+    <string name="client_id">vaultdex-mobile-app</string>
+</map>

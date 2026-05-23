@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="enrolled_device_id">a1b2c3d4-e5f6-7890-abcd-ef1234567890</string>
+    <boolean name="allow_biometric_bypass" value="false" />
+    <long name="enrollment_timestamp" value="1779556300945" />
+    <boolean name="is_biometric_enrolled" value="true" />
+    <string name="biometric_auth_token">bio_tkn_9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e</string>
+    <string name="biometric_type">FINGERPRINT</string>
+</map>

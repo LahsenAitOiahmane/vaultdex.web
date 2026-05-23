@@ -1,0 +1,21 @@
+Columns in 'scans' table:
+ - id: integer
+ - scan_id: character varying
+ - package_name: character varying
+ - owner_id: integer
+ - status: character varying
+ - current_step: character varying
+ - apk_filename: character varying
+ - apk_path: text
+ - dump_dir: text
+ - error: text
+ - created_at: timestamp with time zone
+ - started_at: timestamp with time zone
+ - completed_at: timestamp with time zone
+ - elapsed_seconds: double precision
+ - scan_log: jsonb
+ - report: jsonb
+ - risk_score: integer
+ - risk_level: character varying
+ - total_findings: integer
+ - celery_task_id: character varying

@@ -1,0 +1,7 @@
+--- API Request/Response Log ---
+Endpoint: https://api.vaultdex.com/v1/login
+Timestamp: 1779556300946
+Request:
+{"username":"email@gmail.com","password":"qwerty"}
+Response:
+{"status":"success","token":"eyJhbGciOiJIUzI1Ni..."}

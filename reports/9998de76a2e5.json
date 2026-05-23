@@ -1,0 +1,1528 @@
+{
+  "scan_id": "9998de76a2e5",
+  "package_name": "com.vaultdex.app",
+  "risk_score": 100,
+  "risk_level": "CRITICAL_RISK",
+  "severity_counts": {
+    "critical": 30,
+    "high": 49,
+    "medium": 6,
+    "low": 2,
+    "info": 0
+  },
+  "total_findings": 87,
+  "total_files_scanned": 15,
+  "storage_reports": [
+    {
+      "area": "shared_prefs",
+      "files_scanned": 6,
+      "findings": [
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "twilio_auth_token",
+          "value_preview": "a1b2***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-006",
+          "rule_name": "Generic Secret Value",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "twilio_auth_token",
+          "value_preview": "a1b2***",
+          "description": "A key suggesting sensitive or secret data was found with a non-trivial value. This may be a credential, encryption key, or other secret material.",
+          "recommendation": "Review this value. If it is sensitive, move it to the Android Keystore or EncryptedSharedPreferences.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-002",
+          "rule_name": "Plaintext API Key",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "sendgrid_api_key",
+          "value_preview": "SG.x***",
+          "description": "An API key or secret key was found in plaintext local storage. API keys grant access to external services and must not be embedded in client-side storage.",
+          "recommendation": "Move API keys to a backend proxy (BFF pattern). Never store API secrets on the client. Use OAuth tokens with short expiry.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-006",
+          "rule_name": "Generic Secret Value",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "aws_secret_access_key",
+          "value_preview": "wJal***",
+          "description": "A key suggesting sensitive or secret data was found with a non-trivial value. This may be a credential, encryption key, or other secret material.",
+          "recommendation": "Review this value. If it is sensitive, move it to the Android Keystore or EncryptedSharedPreferences.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-008",
+          "rule_name": "Cloud Service Key",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "aws_secret_access_key",
+          "value_preview": "wJal***",
+          "description": "A cloud service key (Firebase, AWS, GCP, Azure) was found in local storage. These keys may grant access to backend infrastructure.",
+          "recommendation": "Cloud keys should be managed server-side. Use identity federation (e.g., Firebase Auth) instead of embedding keys.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-007",
+          "rule_name": "Plaintext Session Identifier",
+          "severity": "HIGH",
+          "category": "session",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "twilio_account_sid",
+          "value_preview": "AC1a***",
+          "description": "A session identifier was found in plaintext storage. Session IDs allow account takeover if extracted from the device.",
+          "recommendation": "Store session tokens in EncryptedSharedPreferences. Implement session expiry and server-side invalidation.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-002",
+          "rule_name": "Plaintext API Key",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "google_maps_api_key",
+          "value_preview": "AIza***",
+          "description": "An API key or secret key was found in plaintext local storage. API keys grant access to external services and must not be embedded in client-side storage.",
+          "recommendation": "Move API keys to a backend proxy (BFF pattern). Never store API secrets on the client. Use OAuth tokens with short expiry.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-002",
+          "rule_name": "Plaintext API Key",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "firebase_api_key",
+          "value_preview": "AIza***",
+          "description": "An API key or secret key was found in plaintext local storage. API keys grant access to external services and must not be embedded in client-side storage.",
+          "recommendation": "Move API keys to a backend proxy (BFF pattern). Never store API secrets on the client. Use OAuth tokens with short expiry.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-002",
+          "rule_name": "Plaintext API Key",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "stripe_secret_key",
+          "value_preview": "sk_l***",
+          "description": "An API key or secret key was found in plaintext local storage. API keys grant access to external services and must not be embedded in client-side storage.",
+          "recommendation": "Move API keys to a backend proxy (BFF pattern). Never store API secrets on the client. Use OAuth tokens with short expiry.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-006",
+          "rule_name": "Generic Secret Value",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "stripe_secret_key",
+          "value_preview": "sk_l***",
+          "description": "A key suggesting sensitive or secret data was found with a non-trivial value. This may be a credential, encryption key, or other secret material.",
+          "recommendation": "Review this value. If it is sensitive, move it to the Android Keystore or EncryptedSharedPreferences.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "stripe_secret_key",
+          "value_preview": "sk_l***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "stripe_publishable_key",
+          "value_preview": "pk_l***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/api_keys.xml",
+          "key_or_field": "sentry_dsn",
+          "value_preview": "http***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "xml_file": "api_keys.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/auth_prefs.xml",
+          "key_or_field": "session_token",
+          "value_preview": "82fd***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "xml_file": "auth_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-007",
+          "rule_name": "Plaintext Session Identifier",
+          "severity": "HIGH",
+          "category": "session",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/auth_prefs.xml",
+          "key_or_field": "session_token",
+          "value_preview": "82fd***",
+          "description": "A session identifier was found in plaintext storage. Session IDs allow account takeover if extracted from the device.",
+          "recommendation": "Store session tokens in EncryptedSharedPreferences. Implement session expiry and server-side invalidation.",
+          "extra": {
+            "xml_file": "auth_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/auth_prefs.xml",
+          "key_or_field": "password",
+          "value_preview": "qwer***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "xml_file": "auth_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-006",
+          "rule_name": "Full Name in Storage",
+          "severity": "LOW",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/auth_prefs.xml",
+          "key_or_field": "display_name",
+          "value_preview": "emai***",
+          "description": "A user's full name or real name was found in local storage. While lower severity alone, combined with other PII it enables identity theft.",
+          "recommendation": "Consider whether caching the user's name locally is necessary. If so, use EncryptedSharedPreferences.",
+          "extra": {
+            "xml_file": "auth_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/auth_prefs.xml",
+          "key_or_field": "email",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "xml_file": "auth_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/auth_prefs.xml",
+          "key_or_field": "username",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "xml_file": "auth_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/biometric_prefs.xml",
+          "key_or_field": "enrolled_device_id",
+          "value_preview": "a1b2***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "xml_file": "biometric_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/biometric_prefs.xml",
+          "key_or_field": "enrollment_timestamp",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "xml_file": "biometric_prefs.xml",
+            "element_tag": "long"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/biometric_prefs.xml",
+          "key_or_field": "biometric_auth_token",
+          "value_preview": "bio_***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "xml_file": "biometric_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-006",
+          "rule_name": "Generic Secret Value",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/biometric_prefs.xml",
+          "key_or_field": "biometric_auth_token",
+          "value_preview": "bio_***",
+          "description": "A key suggesting sensitive or secret data was found with a non-trivial value. This may be a credential, encryption key, or other secret material.",
+          "recommendation": "Review this value. If it is sensitive, move it to the Android Keystore or EncryptedSharedPreferences.",
+          "extra": {
+            "xml_file": "biometric_prefs.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "access_token",
+          "value_preview": "eyJh***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-004",
+          "rule_name": "JWT Token in Storage",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "access_token",
+          "value_preview": "eyJh***",
+          "description": "A JSON Web Token (JWT) was detected in local storage. JWTs contain encoded claims and may include sensitive user data. They must be stored securely, not in plaintext files.",
+          "recommendation": "Store JWTs in EncryptedSharedPreferences. Avoid long-lived tokens \u2014 use short-expiry access tokens with refresh rotation.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "refresh_token",
+          "value_preview": "eyJh***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-004",
+          "rule_name": "JWT Token in Storage",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "refresh_token",
+          "value_preview": "eyJh***",
+          "description": "A JSON Web Token (JWT) was detected in local storage. JWTs contain encoded claims and may include sensitive user data. They must be stored securely, not in plaintext files.",
+          "recommendation": "Store JWTs in EncryptedSharedPreferences. Avoid long-lived tokens \u2014 use short-expiry access tokens with refresh rotation.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "id_token",
+          "value_preview": "eyJh***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-004",
+          "rule_name": "JWT Token in Storage",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "id_token",
+          "value_preview": "eyJh***",
+          "description": "A JSON Web Token (JWT) was detected in local storage. JWTs contain encoded claims and may include sensitive user data. They must be stored securely, not in plaintext files.",
+          "recommendation": "Store JWTs in EncryptedSharedPreferences. Avoid long-lived tokens \u2014 use short-expiry access tokens with refresh rotation.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-002",
+          "rule_name": "Plaintext API Key",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "client_secret",
+          "value_preview": "dGhp***",
+          "description": "An API key or secret key was found in plaintext local storage. API keys grant access to external services and must not be embedded in client-side storage.",
+          "recommendation": "Move API keys to a backend proxy (BFF pattern). Never store API secrets on the client. Use OAuth tokens with short expiry.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-005",
+          "rule_name": "OAuth Client Credentials",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "client_secret",
+          "value_preview": "dGhp***",
+          "description": "OAuth client credentials (client_id or client_secret) were found in local storage. Client secrets must never be embedded in mobile applications.",
+          "recommendation": "Use the Authorization Code flow with PKCE for mobile OAuth. Client secrets belong on the server, not the device.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-006",
+          "rule_name": "Generic Secret Value",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "client_secret",
+          "value_preview": "dGhp***",
+          "description": "A key suggesting sensitive or secret data was found with a non-trivial value. This may be a credential, encryption key, or other secret material.",
+          "recommendation": "Review this value. If it is sensitive, move it to the Android Keystore or EncryptedSharedPreferences.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-005",
+          "rule_name": "OAuth Client Credentials",
+          "severity": "HIGH",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/oauth_tokens.xml",
+          "key_or_field": "client_id",
+          "value_preview": "vaul***",
+          "description": "OAuth client credentials (client_id or client_secret) were found in local storage. Client secrets must never be embedded in mobile applications.",
+          "recommendation": "Use the Authorization Code flow with PKCE for mobile OAuth. Client secrets belong on the server, not the device.",
+          "extra": {
+            "xml_file": "oauth_tokens.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRYPTO-006",
+          "rule_name": "Initialization Vector / Nonce in Storage",
+          "severity": "MEDIUM",
+          "category": "crypto",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/password_hash.xml",
+          "key_or_field": "hash_salt",
+          "value_preview": "Vaul***",
+          "description": "An initialization vector (IV) or nonce was found in storage. While IVs are not secret, a static IV reused across encryptions weakens the cipher.",
+          "recommendation": "Ensure IVs/nonces are randomly generated per encryption operation, not stored and reused. If storing for decryption, verify the value changes on each write.",
+          "extra": {
+            "xml_file": "password_hash.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/password_hash.xml",
+          "key_or_field": "password_sha1_hash",
+          "value_preview": "4300***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "xml_file": "password_hash.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/password_hash.xml",
+          "key_or_field": "password_md5_hash",
+          "value_preview": "49c1***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "xml_file": "password_hash.xml",
+            "element_tag": "string"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "shared_prefs",
+          "file_path": "shared_prefs/shared_prefs/password_hash.xml",
+          "key_or_field": "password_md5_hash",
+          "value_preview": "49c1***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "xml_file": "password_hash.xml",
+            "element_tag": "string"
+          }
+        }
+      ],
+      "severity_counts": {
+        "critical": 14,
+        "high": 21,
+        "medium": 1,
+        "low": 1,
+        "info": 0
+      },
+      "notes": [
+        "SharedPreferences are NOT encrypted. The app does not appear to use EncryptedSharedPreferences \u2014 all data is stored in plaintext XML."
+      ]
+    },
+    {
+      "area": "databases",
+      "files_scanned": 1,
+      "findings": [
+        {
+          "rule_id": "PII-003",
+          "rule_name": "SSN / National ID in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "patientSsn",
+          "value_preview": "pati***",
+          "description": "A Social Security Number or national identification number was detected. This is extremely sensitive PII \u2014 storing it locally in plaintext is a critical compliance violation.",
+          "recommendation": "Never store SSN/national IDs on the device. Process them server-side only and never transmit or cache locally.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "health_records",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-007",
+          "rule_name": "Physical Address in Storage",
+          "severity": "MEDIUM",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "latitude",
+          "value_preview": "lati***",
+          "description": "A physical address or location data was found in local storage. Address data is protected PII under GDPR and CCPA.",
+          "recommendation": "Minimise local storage of address data. Fetch from the server when needed and do not cache.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "location_history",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-007",
+          "rule_name": "Physical Address in Storage",
+          "severity": "MEDIUM",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "longitude",
+          "value_preview": "long***",
+          "description": "A physical address or location data was found in local storage. Address data is protected PII under GDPR and CCPA.",
+          "recommendation": "Minimise local storage of address data. Fetch from the server when needed and do not cache.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "location_history",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-007",
+          "rule_name": "Physical Address in Storage",
+          "severity": "MEDIUM",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "addressStr",
+          "value_preview": "addr***",
+          "description": "A physical address or location data was found in local storage. Address data is protected PII under GDPR and CCPA.",
+          "recommendation": "Minimise local storage of address data. Fetch from the server when needed and do not cache.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "location_history",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "senderPhone",
+          "value_preview": "send***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "messages",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "recipientPhone",
+          "value_preview": "reci***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "messages",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "createdAt",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "notes",
+            "column": "createdAt",
+            "row_index": 0
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "createdAt",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "notes",
+            "column": "createdAt",
+            "row_index": 1
+          }
+        },
+        {
+          "rule_id": "PII-007",
+          "rule_name": "Physical Address in Storage",
+          "severity": "MEDIUM",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "billingAddress",
+          "value_preview": "bill***",
+          "description": "A physical address or location data was found in local storage. Address data is protected PII under GDPR and CCPA.",
+          "recommendation": "Minimise local storage of address data. Fetch from the server when needed and do not cache.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "payment_cards",
+            "check_type": "column_name"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "identity_hash",
+          "value_preview": "6a45***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "room_master_table",
+            "column": "identity_hash",
+            "row_index": 0
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "timestamp",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "transactions",
+            "column": "timestamp",
+            "row_index": 0
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "timestamp",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "transactions",
+            "column": "timestamp",
+            "row_index": 1
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "timestamp",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "transactions",
+            "column": "timestamp",
+            "row_index": 2
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "databases",
+          "file_path": "databases/databases/vault_data.db",
+          "key_or_field": "timestamp",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "database": "vault_data.db",
+            "table": "transactions",
+            "column": "timestamp",
+            "row_index": 3
+          }
+        }
+      ],
+      "severity_counts": {
+        "critical": 1,
+        "high": 9,
+        "medium": 4,
+        "low": 0,
+        "info": 0
+      },
+      "notes": [
+        "vault_data.db: Database is NOT encrypted (no SQLCipher). All data is stored in plaintext SQLite.",
+        "Found 2 journal/WAL file(s): vault_data.db-shm, vault_data.db-wal. These files may contain residual data from deleted records."
+      ]
+    },
+    {
+      "area": "files",
+      "files_scanned": 5,
+      "findings": [
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171204.json",
+          "key_or_field": "credentials.password",
+          "value_preview": "qwer***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171204.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-007",
+          "rule_name": "Plaintext Session Identifier",
+          "severity": "HIGH",
+          "category": "session",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171204.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "A session identifier was found in plaintext storage. Session IDs allow account takeover if extracted from the device.",
+          "recommendation": "Store session tokens in EncryptedSharedPreferences. Implement session expiry and server-side invalidation.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171204.json",
+          "key_or_field": "credentials.username",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171204.json",
+          "key_or_field": "exportedAt",
+          "value_preview": "2026***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171204.json",
+          "key_or_field": "profile.email",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171210.json",
+          "key_or_field": "credentials.password",
+          "value_preview": "qwer***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171210.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-007",
+          "rule_name": "Plaintext Session Identifier",
+          "severity": "HIGH",
+          "category": "session",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171210.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "A session identifier was found in plaintext storage. Session IDs allow account takeover if extracted from the device.",
+          "recommendation": "Store session tokens in EncryptedSharedPreferences. Implement session expiry and server-side invalidation.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171210.json",
+          "key_or_field": "credentials.username",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171210.json",
+          "key_or_field": "exportedAt",
+          "value_preview": "2026***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_171210.json",
+          "key_or_field": "profile.email",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173921.json",
+          "key_or_field": "credentials.password",
+          "value_preview": "qwer***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173921.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-007",
+          "rule_name": "Plaintext Session Identifier",
+          "severity": "HIGH",
+          "category": "session",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173921.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "A session identifier was found in plaintext storage. Session IDs allow account takeover if extracted from the device.",
+          "recommendation": "Store session tokens in EncryptedSharedPreferences. Implement session expiry and server-side invalidation.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173921.json",
+          "key_or_field": "credentials.username",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173921.json",
+          "key_or_field": "exportedAt",
+          "value_preview": "2026***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173921.json",
+          "key_or_field": "profile.email",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-001",
+          "rule_name": "Plaintext Password",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173927.json",
+          "key_or_field": "credentials.password",
+          "value_preview": "qwer***",
+          "description": "A value associated with a password-related key was found stored in plaintext. Passwords must never be stored locally in cleartext \u2014 use Android Keystore or server-side hashing.",
+          "recommendation": "Remove plaintext password storage. Use Android Keystore for local secrets, or store only a server-issued session token.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-003",
+          "rule_name": "Plaintext Auth Token",
+          "severity": "CRITICAL",
+          "category": "credentials",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173927.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "An authentication or bearer token was found stored in plaintext. Tokens are equivalent to session credentials and must be protected with EncryptedSharedPreferences or Android Keystore.",
+          "recommendation": "Store tokens using EncryptedSharedPreferences or the Android Keystore system. Set short expiry times and implement token refresh flows server-side.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRED-007",
+          "rule_name": "Plaintext Session Identifier",
+          "severity": "HIGH",
+          "category": "session",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173927.json",
+          "key_or_field": "credentials.sessionToken",
+          "value_preview": "82fd***",
+          "description": "A session identifier was found in plaintext storage. Session IDs allow account takeover if extracted from the device.",
+          "recommendation": "Store session tokens in EncryptedSharedPreferences. Implement session expiry and server-side invalidation.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173927.json",
+          "key_or_field": "credentials.username",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173927.json",
+          "key_or_field": "exportedAt",
+          "value_preview": "2026***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "HIGH",
+          "category": "pii",
+          "storage_area": "files",
+          "file_path": "files/files/backup/account_backup_20260523_173927.json",
+          "key_or_field": "profile.email",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "CRYPTO-005",
+          "rule_name": "Keystore File Detected",
+          "severity": "HIGH",
+          "category": "crypto",
+          "storage_area": "files",
+          "file_path": "files/files/certs/pinned_server_cert.pem",
+          "key_or_field": "pinned_server_cert.pem",
+          "value_preview": "pinn***",
+          "description": "A key or keystore file was found in application data. These files typically contain private keys or certificates and should not be stored in the app's data directory.",
+          "recommendation": "Remove keystore files from application data. Use Android Keystore API for key management instead of file-based stores.",
+          "extra": {
+            "file_size": 833,
+            "check_type": "file_extension"
+          }
+        },
+        {
+          "rule_id": "CRYPTO-004",
+          "rule_name": "Certificate or Public Key",
+          "severity": "LOW",
+          "category": "crypto",
+          "storage_area": "files",
+          "file_path": "files/files/certs/pinned_server_cert.pem",
+          "key_or_field": "-----BEGIN CERTIFICATE-----",
+          "value_preview": "----***",
+          "description": "A certificate or public key was found in local storage. While public keys are not secret, their presence may indicate custom certificate pinning that should be reviewed.",
+          "recommendation": "Public keys and certificates are generally safe to store, but review if this is used for certificate pinning and ensure it is the correct, up-to-date certificate.",
+          "extra": {
+            "line_number": 1,
+            "check_type": "text_line"
+          }
+        }
+      ],
+      "severity_counts": {
+        "critical": 8,
+        "high": 17,
+        "medium": 0,
+        "low": 1,
+        "info": 0
+      },
+      "notes": []
+    },
+    {
+      "area": "cache",
+      "files_scanned": 3,
+      "findings": [
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "cache",
+          "file_path": "cache/cache/api_response_cache_1779556300946.log",
+          "key_or_field": "Timestamp",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "line_number": 3,
+            "check_type": "text_line"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "cache",
+          "file_path": "cache/cache/api_response_cache_1779556300946.log",
+          "key_or_field": "{\"username\"",
+          "value_preview": "\"ema***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "line_number": 5,
+            "check_type": "text_line"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "cache",
+          "file_path": "cache/cache/profile_cache.json",
+          "key_or_field": "cachedAt",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-001",
+          "rule_name": "Email Address in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "cache",
+          "file_path": "cache/cache/profile_cache.json",
+          "key_or_field": "email",
+          "value_preview": "emai***",
+          "description": "An email address was detected in local storage. Email addresses are PII and should not be stored in plaintext on the device.",
+          "recommendation": "Avoid storing email addresses locally. If needed for display, use EncryptedSharedPreferences or mask the address (e.g., u***@example.com).",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "cache",
+          "file_path": "cache/cache/profile_cache.json",
+          "key_or_field": "lastLogin",
+          "value_preview": "1779***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        },
+        {
+          "rule_id": "PII-002",
+          "rule_name": "Phone Number in Storage",
+          "severity": "CRITICAL",
+          "category": "pii",
+          "storage_area": "cache",
+          "file_path": "cache/cache/profile_cache.json",
+          "key_or_field": "userId",
+          "value_preview": "-133***",
+          "description": "A phone number was detected in local storage. Phone numbers are PII and can be used for social engineering or SIM-swap attacks.",
+          "recommendation": "Do not store phone numbers in plaintext. Use encrypted storage or retrieve from the server on demand.",
+          "extra": {
+            "check_type": "json_value"
+          }
+        }
+      ],
+      "severity_counts": {
+        "critical": 6,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "notes": []
+    },
+    {
+      "area": "external",
+      "files_scanned": 0,
+      "findings": [],
+      "severity_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "notes": [
+        "No files found in external/."
+      ]
+    }
+  ],
+  "static_analysis": {
+    "package_name": "com.vaultdex.app",
+    "app_name": "VaultDex",
+    "version_name": "1.0",
+    "version_code": "1",
+    "apk_size_bytes": 17073198,
+    "min_sdk": 26,
+    "min_sdk_name": "8.0 (Oreo)",
+    "target_sdk": 34,
+    "target_sdk_name": "14",
+    "native_architectures": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86",
+      "x86_64"
+    ],
+    "uses_features": [
+      "android.hardware.faketouch"
+    ],
+    "permissions": [
+      {
+        "name": "com.vaultdex.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "risk_level": "unknown",
+        "category": "custom",
+        "description": "Custom permission defined by app or third-party library.",
+        "is_custom": true
+      }
+    ],
+    "dangerous_permission_count": 0,
+    "total_permission_count": 1,
+    "exported_components": [],
+    "total_exported_components": 0,
+    "launchable_activity": "com.vaultdex.app.MainActivity",
+    "manifest_flags": {
+      "debuggable": true,
+      "allow_backup": true,
+      "uses_cleartext_traffic": true,
+      "network_security_config": false,
+      "test_only": false
+    },
+    "deep_links": [],
+    "custom_url_schemes": [],
+    "findings": [
+      {
+        "rule_id": "STATIC-FLAG-001",
+        "rule_name": "App Is Debuggable",
+        "severity": "CRITICAL",
+        "category": "config",
+        "storage_area": "shared_prefs",
+        "file_path": "AndroidManifest.xml",
+        "key_or_field": "android:debuggable",
+        "value_preview": "true",
+        "description": "The app has android:debuggable=true set in the manifest. This allows any user to attach a debugger (JDWP), inspect memory, bypass security checks, and extract all data at runtime. This MUST be false in production builds.",
+        "recommendation": "Set android:debuggable=\"false\" in the release build. Use BuildConfig.DEBUG for debug-only code paths. Ensure your build system strips the flag for release variants.",
+        "extra": {
+          "analysis_type": "static"
+        }
+      },
+      {
+        "rule_id": "STATIC-FLAG-002",
+        "rule_name": "App Data Backup Allowed",
+        "severity": "HIGH",
+        "category": "config",
+        "storage_area": "shared_prefs",
+        "file_path": "AndroidManifest.xml",
+        "key_or_field": "android:allowBackup",
+        "value_preview": "true",
+        "description": "The app allows full data backup via `adb backup`. An attacker with physical access or ADB access can extract all SharedPreferences, databases, and internal files without root. This is a major data exfiltration risk.",
+        "recommendation": "Set android:allowBackup=\"false\" or implement a custom BackupAgent that excludes sensitive data. On Android 12+, use android:dataExtractionRules to control cloud vs device-to-device backup.",
+        "extra": {
+          "analysis_type": "static"
+        }
+      },
+      {
+        "rule_id": "STATIC-FLAG-003",
+        "rule_name": "Cleartext Traffic Allowed",
+        "severity": "HIGH",
+        "category": "config",
+        "storage_area": "shared_prefs",
+        "file_path": "AndroidManifest.xml",
+        "key_or_field": "android:usesCleartextTraffic",
+        "value_preview": "true",
+        "description": "The app allows cleartext (unencrypted HTTP) traffic. Any data sent over HTTP can be intercepted by network attackers (MITM). This includes credentials, tokens, and PII.",
+        "recommendation": "Set android:usesCleartextTraffic=\"false\" and use HTTPS exclusively. Implement a Network Security Configuration to enforce certificate pinning for critical domains.",
+        "extra": {
+          "analysis_type": "static"
+        }
+      },
+      {
+        "rule_id": "STATIC-FLAG-004",
+        "rule_name": "No Network Security Configuration",
+        "severity": "MEDIUM",
+        "category": "config",
+        "storage_area": "shared_prefs",
+        "file_path": "AndroidManifest.xml",
+        "key_or_field": "networkSecurityConfig",
+        "value_preview": "missing",
+        "description": "The app does not define a Network Security Configuration. Without this, the app relies on platform defaults which may allow cleartext traffic to some domains. A network security config enables certificate pinning and domain-specific TLS rules.",
+        "recommendation": "Add a res/xml/network_security_config.xml that: (1) Disables cleartext traffic, (2) Pins certificates for your API domains, (3) Restricts trusted CAs to system-only for production builds.",
+        "extra": {
+          "analysis_type": "static"
+        }
+      }
+    ],
+    "severity_counts": {
+      "critical": 1,
+      "high": 2,
+      "medium": 1,
+      "low": 0,
+      "info": 0
+    }
+  },
+  "analysed_at": "2026-05-23T22:00:56.109303+00:00",
+  "engine_version": "3.0.0"
+}

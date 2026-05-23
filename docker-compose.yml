@@ -1,0 +1,50 @@
+# ═══════════════════════════════════════════════════════════
+# SecureStorageInspector — Docker Compose
+# ═══════════════════════════════════════════════════════════
+# Start all services:  docker-compose up -d
+# Stop all services:   docker-compose down
+# Destroy volumes:     docker-compose down -v
+# ═══════════════════════════════════════════════════════════
+
+services:
+  # ── PostgreSQL ─────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: apk_scanner_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: scanner
+      POSTGRES_PASSWORD: scanner_dev_password
+      POSTGRES_DB: apk_scanner
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scanner -d apk_scanner"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ──────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: apk_scanner_redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redisdata:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+# ── Named volumes (persist across restarts) ──────────────
+volumes:
+  pgdata:
+    name: apk_scanner_pgdata
+  redisdata:
+    name: apk_scanner_redisdata
