@@ -191,40 +191,42 @@ graph TB
 Voici le diagramme Entité-Association (UML / ERD) représentant le schéma relationnel de la base de données PostgreSQL gérée par SQLAlchemy.
 
 ```mermaid
-erDiagram
-    USERS ||--o{ SCANS : "possède"
+classDiagram
+    direction LR
     
-    USERS {
-        int id PK
-        string email UK "Indexé, Unique"
-        string hashed_password
-        string full_name
-        boolean is_active
-        datetime created_at
+    class USERS {
+        +int id [PK]
+        +string email [UK]
+        +string hashed_password
+        +string full_name
+        +boolean is_active
+        +datetime created_at
     }
     
-    SCANS {
-        int id PK
-        string scan_id UK "Indexé, Unique (UUID)"
-        int owner_id FK "Indexé, Cascade Delete"
-        string package_name
-        string status "Ex: QUEUED, WAITING_FOR_USER, DONE"
-        string current_step
-        string apk_filename
-        text apk_path
-        text dump_dir
-        text error
-        datetime created_at
-        datetime started_at
-        datetime completed_at
-        float elapsed_seconds
-        jsonb scan_log "Tableau des logs étape par étape"
-        jsonb report "Le rapport complet (SecurityReport)"
-        int risk_score "Note sur 100"
-        string risk_level "Ex: CRITICAL_RISK"
-        int total_findings
-        string celery_task_id
+    class SCANS {
+        +int id [PK]
+        +string scan_id [UK]
+        +int owner_id [FK]
+        +string package_name
+        +string status
+        +string current_step
+        +string apk_filename
+        +text apk_path
+        +text dump_dir
+        +text error
+        +datetime created_at
+        +datetime started_at
+        +datetime completed_at
+        +float elapsed_seconds
+        +jsonb scan_log
+        +jsonb report
+        +int risk_score
+        +string risk_level
+        +int total_findings
+        +string celery_task_id
     }
+    
+    USERS "1" --> "*" SCANS : possède
 ```
 
 ---
