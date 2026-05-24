@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ SecureStorageInspector (VaultDex)
+# SecureStorageInspector (VaultDex)
 
 **Scanner de sécurité automatisé pour applications Android (APK)**
 
@@ -16,112 +16,112 @@ mots de passe en clair, tokens API exposés, bases de données non chiffrées, e
 
 ---
 
-## 📺 Démo Vidéo
+## Démo Vidéo
 
 <div align="center">
 
 [![Voir la démo sur YouTube](https://img.shields.io/badge/YouTube-Voir%20la%20Démo-red?style=for-the-badge&logo=youtube)](https://youtu.be/i3LqUeckQQ4)
 
-▶️ **[https://youtu.be/i3LqUeckQQ4](https://youtu.be/i3LqUeckQQ4)**
+**[https://youtu.be/i3LqUeckQQ4](https://youtu.be/i3LqUeckQQ4)**
 
 </div>
 
 ---
 
-## 📖 Description du Projet
+## Description du Projet
 
 **SecureStorageInspector** est un outil de sécurité complet qui automatise l'audit du stockage local des applications Android. Il installe un fichier APK sur un émulateur Android (Genymotion), permet à l'utilisateur d'interagir manuellement avec l'application, puis extrait et analyse toutes les données stockées localement pour identifier les vulnérabilités de sécurité.
 
 ### Fonctionnalités principales
 
-- 🔍 **Analyse statique** — Extraction des permissions, composants exportés, drapeaux de sécurité du manifest
-- 📱 **Analyse dynamique** — Installation sur émulateur + interaction manuelle utilisateur
-- 🗄️ **Inspection du stockage** — SharedPreferences, bases SQLite, fichiers, cache
-- 🔐 **28 règles de sécurité** — Détection de credentials, PII, crypto faible, tokens API
-- 📊 **Score de risque** — Note de 0 à 100 avec répartition par sévérité (CRITICAL/HIGH/MEDIUM/LOW)
-- 📄 **Export PDF** — Rapport complet généré côté client avec jsPDF
-- 🔑 **Authentification JWT** — Multi-utilisateur avec isolation des données par tenant
-- 📈 **Dashboard temps réel** — Statistiques, historique des scans, notifications
+- **Analyse statique** — Extraction des permissions, composants exportés, drapeaux de sécurité du manifest
+- **Analyse dynamique** — Installation sur émulateur + interaction manuelle utilisateur
+- **Inspection du stockage** — SharedPreferences, bases SQLite, fichiers, cache
+- **28 règles de sécurité** — Détection de credentials, PII, crypto faible, tokens API
+- **Score de risque** — Note de 0 à 100 avec répartition par sévérité (CRITICAL/HIGH/MEDIUM/LOW)
+- **Export PDF** — Rapport complet généré côté client avec jsPDF
+- **Authentification JWT** — Multi-utilisateur avec isolation des données par tenant
+- **Dashboard temps réel** — Statistiques, historique des scans, notifications
 
 ---
 
-## 🏗️ Architecture du Projet
+## Architecture du Projet
 
 ```
 apk-scanner/
 │
-├── 📁 backend/                          # Backend Python (FastAPI + Celery)
+├── backend/                          # Backend Python (FastAPI + Celery)
 │   ├── __init__.py
 │   ├── config.py                        # Configuration centralisée (pydantic-settings)
 │   │
-│   ├── 📁 adb/                          # Contrôleur ADB (Android Debug Bridge)
+│   ├── adb/                          # Contrôleur ADB (Android Debug Bridge)
 │   │   ├── __init__.py
 │   │   ├── adb_controller.py            # Commandes ADB : install, pull, launch, screenshot
 │   │   └── utils.py                     # Utilitaires : création répertoires, zip des dumps
 │   │
-│   ├── 📁 api/                          # API REST (FastAPI)
+│   ├── api/                          # API REST (FastAPI)
 │   │   ├── __init__.py
 │   │   ├── app.py                       # Factory FastAPI + lifespan (création tables DB)
 │   │   ├── auth.py                      # JWT : hash bcrypt, création/validation tokens
 │   │   ├── dependencies.py              # Injection de dépendances (session DB)
 │   │   ├── middleware.py                # CORS, rate-limiting (slowapi), headers sécurité
 │   │   ├── schemas.py                   # Schémas Pydantic (requêtes/réponses)
-│   │   └── 📁 routes/
+│   │   └── routes/
 │   │       ├── __init__.py
 │   │       ├── auth.py                  # POST /register, POST /login, GET /me
 │   │       ├── health.py                # GET /health (healthcheck)
 │   │       └── scans.py                 # CRUD scans + SSE progress + report + finalize
 │   │
-│   ├── 📁 db/                           # Couche base de données (SQLAlchemy async)
+│   ├── db/                           # Couche base de données (SQLAlchemy async)
 │   │   ├── __init__.py
 │   │   ├── database.py                  # Engine async PostgreSQL + session factory
 │   │   ├── models.py                    # Modèles ORM : User, Scan
 │   │   └── crud.py                      # Opérations CRUD (create, get, list, stats, delete)
 │   │
-│   ├── 📁 emulator/                     # Contrôleur Genymotion
+│   ├── emulator/                     # Contrôleur Genymotion
 │   │   ├── __init__.py
 │   │   └── genymotion_controller.py     # Reset snapshot, démarrage VM, attente boot
 │   │
-│   ├── 📁 engine/                       # Moteur d'analyse de sécurité
+│   ├── engine/                       # Moteur d'analyse de sécurité
 │   │   ├── __init__.py
 │   │   ├── analyser.py                  # AnalysisEngine : orchestre tous les analyseurs
 │   │   ├── models.py                    # Modèles Pydantic : SecurityReport, Finding, etc.
 │   │   ├── scoring.py                   # Algorithme de scoring (0–100)
 │   │   ├── rules_engine.py              # Moteur de règles (pattern matching)
-│   │   ├── 📁 analysers/
+│   │   ├── analysers/
 │   │   │   ├── __init__.py
 │   │   │   ├── static_analyser.py       # Analyse du manifest APK (aapt2)
 │   │   │   ├── sharedprefs_analyser.py  # Analyse SharedPreferences XML
 │   │   │   ├── database_analyser.py     # Analyse bases SQLite
 │   │   │   ├── file_analyser.py         # Analyse fichiers génériques
 │   │   │   └── cache_analyser.py        # Analyse du cache applicatif
-│   │   └── 📁 rules/
+│   │   └── rules/
 │   │       ├── __init__.py
 │   │       ├── credential_rules.py      # Règles : mots de passe, tokens, API keys
 │   │       ├── pii_rules.py             # Règles : données personnelles (email, phone, etc.)
 │   │       ├── crypto_rules.py          # Règles : crypto faible, clés en clair
 │   │       └── config_rules.py          # Règles : configurations dangereuses
 │   │
-│   └── 📁 worker/                       # Worker Celery (tâches asynchrones)
+│   └── worker/                       # Worker Celery (tâches asynchrones)
 │       ├── __init__.py
 │       ├── celery_app.py                # Configuration Celery + broker Redis
 │       ├── tasks.py                     # Tâches : run_scan_task, finalize_scan_task
 │       └── scan_pipeline.py             # Pipeline en 2 phases (Phase A + Phase B)
 │
-├── 📁 frontend/                         # Frontend React (Vite + TypeScript + TailwindCSS)
+├── frontend/                         # Frontend React (Vite + TypeScript + TailwindCSS)
 │   ├── index.html                       # Point d'entrée HTML
 │   ├── package.json                     # Dépendances npm
 │   ├── vite.config.ts                   # Configuration Vite
 │   ├── tsconfig.json                    # Configuration TypeScript
-│   └── 📁 src/
+│   └── src/
 │       ├── main.tsx                     # Bootstrap React + Router
 │       ├── App.tsx                      # Routes protégées + layout principal
 │       ├── index.css                    # Styles globaux (TailwindCSS v4)
-│       ├── 📁 api/
+│       ├── api/
 │       │   └── client.ts               # Client Axios + intercepteurs JWT + types API
-│       ├── 📁 context/
+│       ├── context/
 │       │   └── AuthContext.tsx          # Provider d'authentification React
-│       └── 📁 pages/
+│       └── pages/
 │           ├── HomePage.tsx             # Dashboard : stats, upload APK, scans récents
 │           ├── LoginPage.tsx            # Page de connexion
 │           ├── RegisterPage.tsx         # Page d'inscription
@@ -129,9 +129,9 @@ apk-scanner/
 │           ├── ReportPage.tsx           # Rapport de sécurité complet + export PDF
 │           └── HistoryPage.tsx          # Historique des scans avec recherche
 │
-├── 📁 uploads/                          # APK uploadés (noms UUID, nettoyés après scan)
-├── 📁 dumps/                            # Dumps ADB extraits de l'émulateur
-├── 📁 reports/                          # Rapports JSON générés
+├── uploads/                          # APK uploadés (noms UUID, nettoyés après scan)
+├── dumps/                            # Dumps ADB extraits de l'émulateur
+├── reports/                          # Rapports JSON générés
 │
 ├── docker-compose.yml                   # Services Docker : PostgreSQL 16 + Redis 7
 ├── requirements.txt                     # Dépendances Python
@@ -143,31 +143,31 @@ apk-scanner/
 
 ---
 
-## 🔄 Architecture Logicielle
+## Architecture Logicielle
 
 ```mermaid
 graph TB
-    subgraph "🌐 Frontend (React + Vite)"
+    subgraph "Frontend (React + Vite)"
         A[Dashboard] --> B[Upload APK]
         B --> C[Scan Progress SSE]
         C --> D[Rapport de Sécurité]
         D --> E[Export PDF]
     end
 
-    subgraph "⚡ API (FastAPI)"
+    subgraph "API (FastAPI)"
         F[Routes Auth] --> G[JWT Middleware]
         H[Routes Scans] --> G
         G --> I[CRUD PostgreSQL]
     end
 
-    subgraph "⚙️ Worker (Celery)"
+    subgraph "Worker (Celery)"
         J[Phase A: Install & Launch]
         K[Phase B: Pull & Analyse]
         J --> L[28 Règles de Sécurité]
         K --> L
     end
 
-    subgraph "🗄️ Infrastructure"
+    subgraph "Infrastructure"
         M[(PostgreSQL 16)]
         N[(Redis 7)]
         O[Genymotion Emulator]
@@ -183,10 +183,53 @@ graph TB
     J -->|ADB| O
     K -->|ADB| O
 ```
-### Architecture System
-![image](image.png)
 
-### Flux de scan en deux phases
+---
+
+## Architecture de la Base de Données
+
+Voici le diagramme Entité-Association (UML / ERD) représentant le schéma relationnel de la base de données PostgreSQL gérée par SQLAlchemy.
+
+```mermaid
+erDiagram
+    USERS ||--o{ SCANS : "possède"
+    
+    USERS {
+        int id PK
+        string email UK "Indexé, Unique"
+        string hashed_password
+        string full_name
+        boolean is_active
+        datetime created_at
+    }
+    
+    SCANS {
+        int id PK
+        string scan_id UK "Indexé, Unique (UUID)"
+        int owner_id FK "Indexé, Cascade Delete"
+        string package_name
+        string status "Ex: QUEUED, WAITING_FOR_USER, DONE"
+        string current_step
+        string apk_filename
+        text apk_path
+        text dump_dir
+        text error
+        datetime created_at
+        datetime started_at
+        datetime completed_at
+        float elapsed_seconds
+        jsonb scan_log "Tableau des logs étape par étape"
+        jsonb report "Le rapport complet (SecurityReport)"
+        int risk_score "Note sur 100"
+        string risk_level "Ex: CRITICAL_RISK"
+        int total_findings
+        string celery_task_id
+    }
+```
+
+---
+
+## Flux de scan en deux phases
 
 | Phase | Étapes | Description |
 |-------|--------|-------------|
@@ -195,7 +238,7 @@ graph TB
 
 ---
 
-## 🚀 Prérequis
+## Prérequis
 
 | Composant | Version | Utilisation |
 |-----------|---------|-------------|
@@ -208,7 +251,7 @@ graph TB
 
 ---
 
-## ⚙️ Installation & Déploiement
+## Installation & Déploiement
 
 ### 1. Cloner le dépôt
 
@@ -268,7 +311,7 @@ cd ..
 
 ---
 
-## 🖥️ Lancement du Projet
+## Lancement du Projet
 
 Ouvrez **4 terminaux** distincts et exécutez dans l'ordre :
 
@@ -305,14 +348,14 @@ npm run dev
 
 | Service | URL |
 |---------|-----|
-| 🌐 **Dashboard React** | [http://localhost:5173](http://localhost:5173) |
-| 📡 **API FastAPI** | [http://127.0.0.1:8000](http://127.0.0.1:8000) |
-| 📚 **Documentation Swagger** | [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) |
-| 📖 **Documentation ReDoc** | [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc) |
+| **Dashboard React** | [http://localhost:5173](http://localhost:5173) |
+| **API FastAPI** | [http://127.0.0.1:8000](http://127.0.0.1:8000) |
+| **Documentation Swagger** | [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) |
+| **Documentation ReDoc** | [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc) |
 
 ---
 
-## 🐳 Déploiement Docker
+## Déploiement Docker
 
 Les services d'infrastructure (PostgreSQL et Redis) sont entièrement conteneurisés via Docker Compose :
 
@@ -355,7 +398,7 @@ docker-compose down -v
 
 ---
 
-## 🔒 Sécurité
+## Sécurité
 
 | Mesure | Détail |
 |--------|--------|
@@ -370,7 +413,7 @@ docker-compose down -v
 
 ---
 
-## 🧪 Tests
+## Tests
 
 ```bash
 source .venv/bin/activate
@@ -384,7 +427,7 @@ python -m pytest test_phase1.py -v
 
 ---
 
-## 📚 Stack Technique
+## Stack Technique
 
 ### Backend
 - **FastAPI** — Framework web async haute performance
@@ -414,7 +457,7 @@ python -m pytest test_phase1.py -v
 
 ---
 
-## 📝 Licence
+## Licence
 
 Ce projet est distribué sous la **Licence MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
@@ -446,6 +489,6 @@ SOFTWARE.
 
 <div align="center">
 
-**Fait avec ❤️ par l'équipe VaultDex**
+**Fait avec soin par l'équipe VaultDex**
 
 </div>
